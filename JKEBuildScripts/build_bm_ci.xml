@@ -15,7 +15,7 @@ This example is used to build the JKE sample application.
 <project name="Build and test the JKE sample application" default="web">
 	
 	<property environment="env"/>
-	<property name="image.tag" value="${env.IMAGE_TAG}"/>
+	<property name="image.tag" value="${env.BUILD_NUMBER}"/>
 	<property name="loadDir" value="${basedir}/.." />
 	<property name="build.compiler" value="javac1.7" />
 	<property name="build.debuglevel" value="lines,vars,source"/> 
