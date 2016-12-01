@@ -2,13 +2,13 @@ version: '2'
 
 services:
    db:
-     image: registry.ng.bluemix.net/dtr_ucd_demo1/jke.db:35
+     image: registry.ng.bluemix.net/dtr_ucd_demo1/jke.db:@BUILD_NUMBER@
      restart: always
 
    web:
      depends_on:
        - db
-     image: registry.ng.bluemix.net/dtr_ucd_demo1/jke.web:19
+     image: registry.ng.bluemix.net/dtr_ucd_demo1/jke.web:@BUILD_NUMBER@
      links:
        - db
      ports:
