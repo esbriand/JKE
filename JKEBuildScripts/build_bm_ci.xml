@@ -34,8 +34,22 @@ This example is used to build the JKE sample application.
 	
 	<echo>version=${ant.version}</echo>
 
-	
 	<target name="clean">
+
+		<delete dir="${destdir.bin}" />
+		<delete dir="${destdir.distro}" />
+		<delete dir="${destdir.distro.libs}" />
+		<delete dir="${destdir.war}" />
+		<delete dir="${destdir.db}" />
+		<delete dir="${destdir.deploy}" />		
+		<delete dir="${destdir.gh-test}" />
+		<delete dir="${destdir.tests}" />
+		<delete dir="${destdir.tests.unit}" />
+		<delete dir="${destdir.tests.functional}" />
+
+	</target>
+		
+	<target name="prepare" depends="clean">
 		
 		<echo message="loadDir=${loadDir}" />
 		
@@ -52,7 +66,7 @@ This example is used to build the JKE sample application.
 		
 	</target>
 
-	<target name="web" depends="clean">
+	<target name="web" depends="prepare">
 		
 		<property name="applibsdir" value ="${loadDir}/JKEPrereqJars"/>
 		<property name="buildlibsdir" value ="${loadDir}/JKEBuildScripts/libs"/>
