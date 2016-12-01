@@ -107,6 +107,7 @@ This example is used to build the JKE sample application.
 		<copy todir="${destdir.deploy}">
 			<fileset dir="${deploydockerdir}">
 				<include name="**/*.sh"/>
+				<include name="**/*.yml"/>
 			</fileset>
 		</copy>
 		
