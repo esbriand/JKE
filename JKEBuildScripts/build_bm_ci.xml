@@ -15,6 +15,7 @@ This example is used to build the JKE sample application.
 <project name="Build and test the JKE sample application" default="web">
 	
 	<property environment="env"/>
+	<property name="image.tag" value="${env.IMAGE_TAG}"/>
 	<property name="loadDir" value="${basedir}/.." />
 	<property name="build.compiler" value="javac1.7" />
 	<property name="build.debuglevel" value="lines,vars,source"/> 
@@ -72,13 +73,13 @@ This example is used to build the JKE sample application.
           		tofile="${loadDir}/docker.jke.deploy/docker-compose.yml" >
       			<filterchain>
          			<replacetokens>
-            				<token key="BUILD_NUMBER" value="${build.num}"/>
+            				<token key="BUILD_NUMBER" value="${image.tag}"/>
           			</replacetokens>
 			</filterchain>
 		</copy>
 	</target>
 	
-	<target name="web" depends="prepare">
+	<target name="web" depends="replace">
 		
 		<property name="applibsdir" value ="${loadDir}/JKEPrereqJars"/>
 		<property name="buildlibsdir" value ="${loadDir}/JKEBuildScripts/libs"/>
