@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+   db:
+     image: registry.ng.bluemix.net/dtr_ucd_demo1/jke.db:35
+     restart: always
+
+   web:
+     depends_on:
+       - db
+     image: registry.ng.bluemix.net/dtr_ucd_demo1/jke.web:19
+     links:
+       - db
+     ports:
+       - "9080:9080"
+     restart: always
