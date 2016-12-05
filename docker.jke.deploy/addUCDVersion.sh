@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 # Invoke the UCD REST interface to import the version created in the Bluemix Container Registry.
 # Then verify the version was imported or time-out.
 
