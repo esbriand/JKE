@@ -7,16 +7,16 @@ set -x
 COMPONENT=$1
 VERSION=$2
 PASSWORD=$3
+echo "Importing version $VERSION of $COMPONENT component."
 
 # Import a new component version into UCD using a REST call. This call is asynchronous and will return before
 # the UCD version import process completes
 curl -k -u admin:$PASSWORD https://10.173.188.45:8443/cli/component/integrate -X PUT -d {"component":"$COMPONENT"}
-sleep 20
 
 # Check to see if the version was created. If this doesn't happen within a minute return failure.
 ATTEMPTS=0
 while [ $ATTEMPTS -lt 6 ]; do
-        CRESULT=`udclient getVersionProperties -component $COMPONENT -version $VERSION 2>&1`
+        CRESULT=`/opt/ibm-ucd/udclient/udclient getVersionProperties -component $COMPONENT -version $VERSION 2>&1`
         if [[ $CRESULT =~ "could not be resolved" ]]; then
                 let ATTEMPTS=ATTEMPTS+1
                 echo "Attempt $ATTEMPTS of 6"
