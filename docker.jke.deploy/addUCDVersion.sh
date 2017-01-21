@@ -6,14 +6,16 @@
 # Get command-line parameters
 COMPONENT=$1
 VERSION=$2
-PASSWORD=$3
+UCD_URL=$3
+UCD_USERNAME=$4
+UCD_PASSWORD=$5
 echo "Importing version $VERSION of $COMPONENT component."
 
 # Setup environment to run udclient
 export JAVA_HOME=/etc/alternatives/jre_1.8.0_openjdk
-export DS_USERNAME=admin
-export DS_PASSWORD=$PASSWORD
-export DS_WEB_URL=https\://10.173.188.45\:8443
+export DS_USERNAME=$UCD_USERNAME
+export DS_PASSWORD=$UCD_PASSWORD
+export DS_WEB_URL=$UCD_URL
 
 # Import a new component version into UCD using a REST call. This call is asynchronous and will return before
 # the UCD version import process completes
