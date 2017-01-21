@@ -19,7 +19,7 @@ export DS_WEB_URL=$UCD_URL
 
 # Import a new component version into UCD using a REST call. This call is asynchronous and will return before
 # the UCD version import process completes
-curl -k -u $DS_USERNAME:$PASSWORD ${DS_WEB_URL}/cli/component/integrate -X PUT -d {"component":"$COMPONENT"}
+curl -k -u $DS_USERNAME:$DS_PASSWORD ${DS_WEB_URL}/cli/component/integrate -X PUT -d {"component":"$COMPONENT"}
 
 # Check to see if the version was created. If this doesn't happen within a minute return failure.
 ATTEMPTS=0
